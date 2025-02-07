@@ -935,11 +935,11 @@ Dislike ($selectedTopics_content[_i][4])
 &lt;/div&gt; &lt;!-- closes TAB-CONTENT --&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="setup scenario" tags="" position="800,425" size="100,100">&lt;&lt;silent&gt;&gt;
 &lt;!-- WIN SCENARIOS--&gt;
-&lt;&lt;if $users &gt; 50000&gt;&gt;
+&lt;&lt;if $users &gt; 5000&gt;&gt;
 &lt;&lt;goto &quot;GOOD Ending USERS&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $funds &gt; 500000&gt;&gt;
+&lt;&lt;if $funds &gt; 50000&gt;&gt;
 &lt;&lt;goto &quot;GOOD Ending FUNDS&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -1126,6 +1126,12 @@ Dislike ($selectedTopics_content[_i][4])
             &lt;&lt;/if&gt;&gt;
 
 		&lt;!-- Number of users  ---&gt;
+        &lt;&lt;if $rating &lt; 2&gt;&gt;
+          &lt;&lt;set $temp_users_loss to parseInt($temp_users_loss) + parseInt($users) * 0.1&gt;&gt;
+        &lt;&lt;elseif $rating &gt; 3&gt;&gt;
+        &lt;&lt;set $temp_users_gain to parseInt($temp_users_gain) + parseInt($users) * 0.1&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        
 			&lt;&lt;set $users to parseInt($users) + parseInt($temp_users_gain) - parseInt($temp_users_loss)&gt;&gt;
 
 		&lt;!-- Funds ---&gt;        
